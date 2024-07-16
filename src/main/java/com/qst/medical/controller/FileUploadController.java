@@ -38,7 +38,6 @@ public class FileUploadController {
     @PostMapping(value = "")
     public Msg fileUpload(MultipartFile file) {
 //        System.out.println("进入了控制器");
-        Msg msg = fileUploadService.upload(file);
-        return msg;
+        return fileUploadService.upload(file);
     }
 }

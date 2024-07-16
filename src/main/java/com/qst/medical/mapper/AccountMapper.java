@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @author liulindong
  * @since 2021年8月17日13:33:15
  */
-@Component
+@Component//其实不用写，在MedicalApplication类中已经配置了扫描，所以可以不写
 public interface AccountMapper {
 
     /*用户登录*/

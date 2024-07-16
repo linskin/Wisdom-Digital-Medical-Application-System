@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qst.medical.mapper.DrugCompanyMapper">
+    <resultMap id="DrugCompanyResult" type="com.qst.medical.domain.DrugCompany">
+        <id column="company_id" property="companyId" />
+        <result column="company_name" property="companyName" />
+        <result column="company_phone" property="companyPhone" />
+    </resultMap>
+    <sql id="selectCompanyVo">
+        select company_id,
+               company_name,
+               company_phone,
+               updatetime,
+               createtime
+
+            from drugcompany
+    </sql>
+    <insert id="insert">
+        insert into drugcompany(company_name,company_phone,createtime,updatetime) values (#{companyName},#{companyPhone},now(),now())
+    </insert>
+    <update id="update">
+        update drugcompany set company_name = #{companyName},company_phone = #{companyPhone},updatetime=now() where company_id = #{companyId}
+    </update>
+    <delete id="delete">
+        delete from drugcompany where company_id = #{companyId}
+    </delete>
+    <select id="selectList" resultMap="DrugCompanyResult">
+        <include refid="selectCompanyVo"/>
+        <where>
+            <if test="company_name != null and company_name != ''">
+                and company_name like concat('%',#{company_name},'%')
+            </if>
+        </where>
+    </select>
+<!--    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.DrugCompany">-->
+
+<!--    </select>-->
+</mapper>
