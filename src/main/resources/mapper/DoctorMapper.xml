@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qst.medical.mapper.DoctorMapper">
+    <resultMap id="DoctorResult" type="com.qst.medical.domain.Doctor">
+        <id column="level_id" property="levelId" />
+        <result column="type_id" property="typeId" />
+        <result column="account_id" property="accountId" />
+    </resultMap>
+<!--    <sql id="selectDoctorVo">-->
+<!--        select doctor.name,doctor.age,doctor.sex,doctor_level.name,doctor.phone,treat_type.name-->
+<!--        from doctor,doctor_level,treat_type-->
+<!--        where doctor_level.id = doctor.level_id and treat_type.id = doctor.type_id-->
+<!--    </sql>-->
+
+
+    <insert id="insert"></insert>
+    <update id="update"></update>
+    <delete id="delete"></delete>
+<!--    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.Doctor"></select>-->
+    <select id="selectDoctorList" resultMap="DoctorResult">
+        select doctor.id,doctor.name,doctor.age,doctor.sex,doctor_level.name as doctorLevel,doctor.phone as phoneNumber,treat_type.name as treatType
+        from doctor,doctor_level,treat_type
+        where doctor_level.id = doctor.level_id and treat_type.id = doctor.type_id
+          and doctor.name like concat('%',#{keword},'%')
+    </select>
+</mapper>

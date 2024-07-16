@@ -18,6 +18,22 @@ import org.hibernate.validator.constraints.Length;
 * @TableName doctor
 */
 public class Doctor{
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", levelId=" + levelId +
+                ", phone='" + phone + '\'' +
+                ", typeId=" + typeId +
+                ", hospital='" + hospital + '\'' +
+                ", updatetime=" + updatetime +
+                ", createtime=" + createtime +
+                ", accountId=" + accountId +
+                '}';
+    }
 
     /**
     * id(医生信息表)
