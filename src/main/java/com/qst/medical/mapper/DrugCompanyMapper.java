@@ -7,16 +7,16 @@ import java.util.List;
 
 public interface DrugCompanyMapper extends BaseMapper<DrugCompany>{
 
-    @Override
+//    @Override
     int insert(DrugCompany drugCompany);
 
-    @Override
+//    @Override
     int update(DrugCompany drugCompany);
 
-    @Override
+//    @Override
     int delete(DrugCompany drugCompany);
 
-    @Override
+//    @Override
     DrugCompany selectByPrimaryKey(Serializable id);
 
     List<DrugCompany> selectList(String name);

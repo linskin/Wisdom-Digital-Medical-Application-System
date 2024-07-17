@@ -1,5 +1,6 @@
 package com.qst.medical.mapper;
 
+import com.qst.medical.domain.Account;
 import com.qst.medical.entity.AccountEntity;
 import com.qst.medical.model.AccountModel;
 import org.springframework.stereotype.Component;
@@ -18,10 +19,12 @@ public interface AccountMapper {
     AccountModel login(String uname, String encrypt);
 
     /*注册账号*/
-    int regist(AccountEntity entity);
+    int regist(Account entity);
 
     /*校验手机号存在*/
     int checkPhone(String phone);
+
+    int selectIdByPhone(String phone);
 
     /*更新账户信息*/
     int updateAccount(AccountEntity entity);

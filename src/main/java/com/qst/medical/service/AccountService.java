@@ -1,5 +1,7 @@
 package com.qst.medical.service;
 
+import com.qst.medical.domain.Account;
+import com.qst.medical.entity.AccountEntity;
 import com.qst.medical.mapper.AccountMapper;
 import com.qst.medical.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +31,18 @@ public class AccountService {
             return Msg.success().mess("重置成功");
         }
         return Msg.fail().mess("重置失败");
+    }
+
+    public Msg doctorRegister(AccountEntity accountEntity) {
+        if (accountMapper.checkPhone(accountEntity.getPhoneNumber()) > 0) {
+            return Msg.fail().mess("该手机号已被注册");
+        }else if (accountMapper.regist(accountEntity) > 0) {
+                return Msg.success().mess("医生账号注册成功");
+            }
+        return Msg.fail();
+    }
+
+    public long selectIdByPhone(String phone) {
+        return accountMapper.selectIdByPhone(phone);
     }
 }

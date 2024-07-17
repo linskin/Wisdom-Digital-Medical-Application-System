@@ -1,24 +1,29 @@
 package com.qst.medical.mapper;
 
 import com.qst.medical.domain.Doctor;
-import com.qst.medical.domain.IDoctor;
+import com.qst.medical.model.DoctorLevelModel;
+import com.qst.medical.model.TreatTypeModel;
 
 import java.io.Serializable;
 import java.util.List;
 
 public interface DoctorMapper extends BaseMapper<Doctor>{
 
-    @Override
+//    @Override
     int insert(Doctor doctor);
 
-    @Override
+//    @Override
     int update(Doctor doctor);
 
-    @Override
-    int delete(Doctor doctor);
+//    @Override
+    int delete(Long id);
 
-    @Override
+//    @Override
     Doctor selectByPrimaryKey(Serializable id);
 
-    List<IDoctor> selectDoctorList(String keyword);
+    List<Doctor> selectDoctorList(String keyword);
+
+    List<TreatTypeModel> getAllTreatType();
+
+    List<DoctorLevelModel> getAllLevel();
 }

@@ -18,99 +18,66 @@ import org.hibernate.validator.constraints.Length;
 * @TableName doctor
 */
 public class Doctor{
-    @Override
-    public String toString() {
-        return "Doctor{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", sex=" + sex +
-                ", levelId=" + levelId +
-                ", phone='" + phone + '\'' +
-                ", typeId=" + typeId +
-                ", hospital='" + hospital + '\'' +
-                ", updatetime=" + updatetime +
-                ", createtime=" + createtime +
-                ", accountId=" + accountId +
-                '}';
-    }
 
-    /**
-    * id(医生信息表)
-    */
-    @NotNull(message="[id(医生信息表)]不能为空")
-    @ApiModelProperty("id(医生信息表)")
     private Long id;
-    /**
-    * 医生姓名
-    */
-    @Size(max= 255,message="编码长度不能超过255")
-    @ApiModelProperty("医生姓名")
-    @Length(max= 255,message="编码长度不能超过255")
+
     private String name;
-    /**
-    * 年龄
-    */
-    @ApiModelProperty("年龄")
+
     private Integer age;
-    /**
-    * 性别：1男，2女
-    */
-    @ApiModelProperty("性别：1男，2女")
+
     private Integer sex;
-    /**
-    * 医师级别id
-    */
-    @ApiModelProperty("医师级别id")
+
     private Long levelId;
-    /**
-    * 联系方式
-    */
-    @Size(max= 255,message="编码长度不能超过255")
-    @ApiModelProperty("联系方式")
-    @Length(max= 255,message="编码长度不能超过255")
+
     private String phone;
-    /**
-    * 诊治类别id
-    */
-    @ApiModelProperty("诊治类别id")
+
     private Long typeId;
-    /**
-    * 所属医院
-    */
-    @Size(max= 255,message="编码长度不能超过255")
-    @ApiModelProperty("所属医院")
-    @Length(max= 255,message="编码长度不能超过255")
+
     private String hospital;
-    /**
-    * 更新时间
-    */
-    @ApiModelProperty("更新时间")
+
     private Date updatetime;
-    /**
-    * 创建时间
-    */
-    @ApiModelProperty("创建时间")
+
     private Date createtime;
-    /**
-    * 账号id
-    */
-    @ApiModelProperty("账号id")
+
     private Long accountId;
 
-    public @NotNull(message = "[id(医生信息表)]不能为空") Long getId() {
+    private String doctorLevel;
+
+    private String TreatType;
+
+    private String phoneNumber;
+
+    private String pwd;
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(@NotNull(message = "[id(医生信息表)]不能为空") Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public @Size(max = 255, message = "编码长度不能超过255") @Length(max = 255, message = "编码长度不能超过255") String getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(@Size(max = 255, message = "编码长度不能超过255") @Length(max = 255, message = "编码长度不能超过255") String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -138,11 +105,11 @@ public class Doctor{
         this.levelId = levelId;
     }
 
-    public @Size(max = 255, message = "编码长度不能超过255") @Length(max = 255, message = "编码长度不能超过255") String getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(@Size(max = 255, message = "编码长度不能超过255") @Length(max = 255, message = "编码长度不能超过255") String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -154,11 +121,11 @@ public class Doctor{
         this.typeId = typeId;
     }
 
-    public @Size(max = 255, message = "编码长度不能超过255") @Length(max = 255, message = "编码长度不能超过255") String getHospital() {
+    public String getHospital() {
         return hospital;
     }
 
-    public void setHospital(@Size(max = 255, message = "编码长度不能超过255") @Length(max = 255, message = "编码长度不能超过255") String hospital) {
+    public void setHospital(String hospital) {
         this.hospital = hospital;
     }
 
@@ -184,5 +151,21 @@ public class Doctor{
 
     public void setAccountId(Long accountId) {
         this.accountId = accountId;
+    }
+
+    public String getDoctorLevel() {
+        return doctorLevel;
+    }
+
+    public void setDoctorLevel(String doctorLevel) {
+        this.doctorLevel = doctorLevel;
+    }
+
+    public String getTreatType() {
+        return TreatType;
+    }
+
+    public void setTreatType(String treatType) {
+        TreatType = treatType;
     }
 }

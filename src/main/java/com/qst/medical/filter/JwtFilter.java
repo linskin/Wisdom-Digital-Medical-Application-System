@@ -44,7 +44,7 @@ public class JwtFilter extends OncePerRequestFilter {
             String uname = null;
             try {
                 uname = (String) JwtUtils.getClaims(token).get("uname");
-                System.out.println(uname);
+//                System.out.println(uname);
             } catch (ExpiredJwtException e) {
                 logger.info("失效身份");
             }
