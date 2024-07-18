@@ -35,7 +35,8 @@
             </if>
         </where>
     </select>
-<!--    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.DrugCompany">-->
+    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.DrugCompany"></select>
+    <!--    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.DrugCompany">-->
 
 <!--    </select>-->
 </mapper>

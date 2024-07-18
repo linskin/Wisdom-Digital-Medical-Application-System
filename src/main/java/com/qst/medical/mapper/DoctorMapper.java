@@ -7,7 +7,7 @@ import com.qst.medical.model.TreatTypeModel;
 import java.io.Serializable;
 import java.util.List;
 
-public interface DoctorMapper extends BaseMapper<Doctor>{
+public interface DoctorMapper{
 
 //    @Override
     int insert(Doctor doctor);

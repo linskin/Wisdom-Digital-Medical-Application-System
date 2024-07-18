@@ -6,12 +6,12 @@ import com.github.pagehelper.PageInfo;
 import com.qst.medical.domain.Doctor;
 import com.qst.medical.entity.AccountEntity;
 import com.qst.medical.mapper.DoctorMapper;
-import com.qst.medical.service.AccountService;
 import com.qst.medical.service.DoctorService;
 import com.qst.medical.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Service
@@ -29,6 +29,7 @@ public class DoctorServiceImpl implements DoctorService {
         return new PageInfo<>(list);
     }
 
+    @RolesAllowed("1")
     public int addDoctor(Doctor doctor) {
         AccountEntity accountEntity = new AccountEntity();
 

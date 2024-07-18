@@ -4,21 +4,15 @@ import com.qst.medical.domain.superdomain.SuperDomain;
 
 import java.util.Date;
 
-/**
- * 账号实体类-Account
- *
- * @author liulindong
- * @since 2021年8月17日13:34:17
- */
 public class Account extends SuperDomain {
     private Long id;
     private String uname;
     private String pwd;
     private String phoneNumber;
-    private String utype;   //ROLE_1管理员、ROLE_2医生、ROLE_3患者
+    private String utype;
     private Date updatetime;
     private Date createtime;
-    private String realname;//真实姓名
+    private String realname;
 
     public Long getId() {
         return id;
@@ -82,19 +76,5 @@ public class Account extends SuperDomain {
 
     public void setRealname(String realname) {
         this.realname = realname;
-    }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", uname='" + uname + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", utype='" + utype + '\'' +
-                ", updatetime=" + updatetime +
-                ", createtime=" + createtime +
-                ", realname='" + realname + '\'' +
-                '}';
     }
 }

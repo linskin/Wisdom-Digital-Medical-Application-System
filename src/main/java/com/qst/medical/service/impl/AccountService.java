@@ -1,6 +1,5 @@
-package com.qst.medical.service;
+package com.qst.medical.service.impl;
 
-import com.qst.medical.domain.Account;
 import com.qst.medical.entity.AccountEntity;
 import com.qst.medical.mapper.AccountMapper;
 import com.qst.medical.util.Msg;

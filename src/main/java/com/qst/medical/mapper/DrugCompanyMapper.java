@@ -5,7 +5,7 @@ import com.qst.medical.domain.DrugCompany;
 import java.io.Serializable;
 import java.util.List;
 
-public interface DrugCompanyMapper extends BaseMapper<DrugCompany>{
+public interface DrugCompanyMapper{
 
 //    @Override
     int insert(DrugCompany drugCompany);

@@ -3896,7 +3896,7 @@ INSERT INTO `permission` VALUES ('3', '1', 'BaseCompany', '/base/company', 'Comp
 INSERT INTO `permission` VALUES ('4', '1', 'BaseSale', '/base/sale', 'SaleManage', '1', '销售地点管理');
 INSERT INTO `permission` VALUES ('5', '1', 'BaseCity', '/base/city', 'CityManage', '1', '城市信息管理');
 INSERT INTO `permission` VALUES ('6', '1', 'ManageDrug', '/manage/drug', 'DrugManage', '1', '药品信息管理');
-INSERT INTO `permission` VALUES ('7', '1', 'MedicalPolicy', '/manage/medical/policy', 'MedicalPolicy', '1', '医保政策管理');
+INSERT INTO `permission` VALUES ('7', '1', 'com.qst.medical.domain.MedicalPolicyController', '/manage/medical/policy', 'com.qst.medical.domain.MedicalPolicyController', '1', '医保政策管理');
 INSERT INTO `permission` VALUES ('8', '1', 'CompanyPolicy', '/manage/company/policy', 'CompanyPolicy', '1', '医药公司政策管理');
 INSERT INTO `permission` VALUES ('9', '1', 'DoctorManage', '/manage/doctor', 'DoctorManage', '1', '医生信息管理');
 INSERT INTO `permission` VALUES ('10', '1', 'MaterialManage', '/manage/material', 'MaterialManage', '1', '必备材料管理');

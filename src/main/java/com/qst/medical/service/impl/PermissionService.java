@@ -1,4 +1,4 @@
-package com.qst.medical.service;
+package com.qst.medical.service.impl;
 
 import com.qst.medical.domain.Permission;
 import com.qst.medical.mapper.PermissionMapper;

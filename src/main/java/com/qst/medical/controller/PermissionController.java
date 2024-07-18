@@ -1,6 +1,6 @@
 package com.qst.medical.controller;
 
-import com.qst.medical.service.PermissionService;
+import com.qst.medical.service.impl.PermissionService;
 import com.qst.medical.util.Msg;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;

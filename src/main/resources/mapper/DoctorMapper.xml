@@ -49,5 +49,6 @@
         select *
         from treat_type
     </select>
+    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.Doctor"></select>
 
 </mapper>
