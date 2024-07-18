@@ -38,7 +38,7 @@
             select count(*) from city
         </selectKey>
         insert into city(updatetime,createtime,city_number)
-        values (#{updatetime},#{createtime},#{cityNumber})
+        values (now(),now(),#{cityNumber})
     </insert>
     <!--根据id删除城市信息-->
     <delete id="deleteCityById">

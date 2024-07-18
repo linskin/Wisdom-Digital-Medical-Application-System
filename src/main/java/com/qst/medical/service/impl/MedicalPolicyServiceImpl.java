@@ -2,7 +2,6 @@ package com.qst.medical.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.qst.medical.domain.MedicalPolicy;
 import com.qst.medical.entity.MedicalPolicyEntity;
 import com.qst.medical.mapper.MedicalPolicyMapper;
 import com.qst.medical.model.MedicalPolicyModel;

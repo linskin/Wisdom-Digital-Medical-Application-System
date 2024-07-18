@@ -2,6 +2,7 @@ package com.qst.medical.service;
 
 import com.github.pagehelper.PageInfo;
 import com.qst.medical.domain.Doctor;
+import com.qst.medical.util.Msg;
 
 public interface DoctorService {
     PageInfo<Doctor> getDoctorList(int pageNum, int pageSize, String name);
@@ -13,4 +14,6 @@ public interface DoctorService {
     int updateDoctor(Doctor doctor);
 
     Doctor getDoctorById(Long id);
+
+    Msg getDoctorLevelAndType();
 }

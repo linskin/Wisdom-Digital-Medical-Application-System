@@ -24,7 +24,7 @@ public interface AccountMapper {
     /*校验手机号存在*/
     int checkPhone(String phone);
 
-    int selectIdByPhone(String phone);
+    Long selectIdByPhone(String phone);
 
     /*更新账户信息*/
     int updateAccount(AccountEntity entity);

@@ -13,7 +13,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -45,10 +44,7 @@ public class CityServiceImpl implements CityService{
 
     public Msg saveCity(Integer cityNumber) {
         City city = new City();
-        Date d = new Date();
         city.setCityNumber(cityNumber);
-        city.setCreatetime(d);
-        city.setUpdatetime(d);
         CityEntity ce = new CityEntity();
         BeanUtils.copyProperties(city,ce);//对象拷贝
         int i = cityMapper.saveCity(ce);

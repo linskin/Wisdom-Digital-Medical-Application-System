@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qst.medical.mapper.MaterialMapper">
+    <resultMap id="MaterialResult" type="com.qst.medical.domain.Material">
+        <result column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="message" property="message"/>
+    </resultMap>
+
+    <sql id="selectMaterialVo">
+        select id,
+               title,
+               message,
+               create_time,
+               update_time
+        from material
+    </sql>
+
+    <insert id="insert" parameterType="com.qst.medical.domain.Material">
+        insert into material(title,message,create_time,update_time)
+        values (#{title},#{message},now(),now())
+    </insert>
+
+    <update id="update">
+        update material
+        set title=#{title},
+            message=#{message},
+            update_time=now()
+        where id=#{id}
+    </update>
+
+    <delete id="delete">
+        delete from material where id = #{id}
+    </delete>
+
+    <select id="selectList" resultMap="MaterialResult">
+        <include refid="selectMaterialVo"/>
+        <where>
+            <if test="title != null and title != ''">title like concat('%',#{keyword},'%')</if>
+        </where>
+    </select>
+    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.Material">
+        select *
+        from material where id = #{id}
+    </select>
+
+
+</mapper>
