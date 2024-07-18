@@ -25,9 +25,8 @@ public class SaleServiceImpl implements SaleService {
         }
         PageHelper.startPage(pn, size);
         List<Sale> list = saleMapper.getAllSale(name);
-        System.out.println(list);
-        PageInfo<Sale> info = new PageInfo<>(list,5);
-        return info;
+//        System.out.println(list);
+        return new PageInfo<>(list,5);
     }
 
     public Msg getSaleById(Integer id) {
@@ -70,6 +69,11 @@ public class SaleServiceImpl implements SaleService {
             return Msg.success().mess("修改成功");
         }
         return Msg.fail().mess("修改失败");
+    }
+
+    @Override
+    public int getSaleTableSize() {
+        return saleMapper.getSize();
     }
 
 

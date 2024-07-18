@@ -1,6 +1,6 @@
 package com.qst.medical.controller;
 
-import com.qst.medical.service.impl.AccountService;
+import com.qst.medical.service.impl.AccountServiceImpl;
 import com.qst.medical.util.Msg;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.security.RolesAllowed;
 
 /**
- * @description: 账户控制器类
- * @author: liulindong
- * @create: 2021/9/3 11:28
+ * &#064;description:  账户控制器类
+ * &#064;author:  liulindong
+ * &#064;create:  2021/9/3 11:28
  **/
 @Api(tags = "账户控制类")
 @RestController
@@ -19,11 +19,11 @@ import javax.annotation.security.RolesAllowed;
 public class AccontController {
 
     @Autowired
-    private AccountService accountService;
+    private AccountServiceImpl accountServiceImpl;
 
     @RolesAllowed({"1"})
     @PutMapping("/{id}")
     public Msg resetPwd(@PathVariable("id") Long id) {
-        return accountService.resetPwd(id);
+        return accountServiceImpl.resetPwd(id);
     }
 }

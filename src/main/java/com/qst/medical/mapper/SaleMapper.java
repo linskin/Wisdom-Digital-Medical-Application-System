@@ -17,4 +17,6 @@ public interface SaleMapper {
     int deleteSaleById(Integer id);
 
     int updateSaleById(Sale sale);
+
+    int getSize();
 }

@@ -1,23 +1,27 @@
 package com.qst.medical.mapper;
 
 import com.qst.medical.domain.DrugCompany;
+import com.qst.medical.model.DrugCompanyModel;
 
 import java.io.Serializable;
 import java.util.List;
 
 public interface DrugCompanyMapper{
 
-//    @Override
+
     int insert(DrugCompany drugCompany);
 
-//    @Override
+
     int update(DrugCompany drugCompany);
 
-//    @Override
+
     int delete(DrugCompany drugCompany);
 
-//    @Override
+    int getSize();
+
     DrugCompany selectByPrimaryKey(Serializable id);
 
     List<DrugCompany> selectList(String name);
+
+    List<DrugCompanyModel> selectAll();
 }

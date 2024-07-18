@@ -17,4 +17,6 @@ public interface SaleService {
 
 
     Msg updateSaleById(Long id, Sale sale);
+
+    int getSaleTableSize();
 }

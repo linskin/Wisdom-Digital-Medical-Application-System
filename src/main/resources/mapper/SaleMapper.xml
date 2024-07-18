@@ -13,7 +13,7 @@
 
     <select id="getAllSale" resultMap="SaleResult">
         select * from sale
-        <if test="sale_name != null and sale_name != ''">
+        <if test="name != null and name != ''">
             <where>
                 sale_name like concat('%',#{sale_name},'%')
             </where>
@@ -22,6 +22,9 @@
 
     <select id="getSaleById" resultMap="SaleResult">
         select * from sale where sale_id=#{id} limit 1
+    </select>
+    <select id="getSize" resultType="java.lang.Integer">
+        select count(sale_id) from sale
     </select>
 
     <insert id="saveSale" parameterType="com.qst.medical.entity.SaleEntity">

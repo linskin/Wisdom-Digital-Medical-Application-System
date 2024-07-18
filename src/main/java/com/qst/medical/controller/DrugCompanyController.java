@@ -51,6 +51,25 @@ public class DrugCompanyController {
         return Msg.fail();
     }
 
+    @GetMapping
+    public Msg getDrugCompanyList()
+    {
+        int pageSize = drugCompanyService.getDrugCompanyTableSize();
+        //分页信息
+        PageInfo<DrugCompany> list = drugCompanyService.getDrugCompanyList(1, pageSize, null);
+        // 判断分页信息不为空
+        if (list!=null && list.getList()!=null && !list.getList().isEmpty()){
+            return Msg.success().data("pageInfo", list);
+        }
+        //若无数据，则返回失败
+        return Msg.fail();
+//        List<DrugCompanyModel> list = drugCompanyService.getAllDrugCompany();
+//        if (!list.isEmpty()){
+//            return Msg.success().data("companyInfo", list);
+//        }
+//        return Msg.fail();
+    }
+
     @PutMapping("/{id}")
     public Msg updateDrugCompany(@PathVariable("id") Long id, @RequestBody DrugCompany company)
     {

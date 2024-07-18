@@ -49,6 +49,10 @@
         select *
         from treat_type
     </select>
-    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.Doctor"></select>
+    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.Doctor">
+        select *
+        from doctor
+        where id = #{id}
+    </select>
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.qst.medical.service.impl;
 
 import com.qst.medical.mapper.AccountMapper;
+import com.qst.medical.service.AccountService;
 import com.qst.medical.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
  * &#064;create:  2021/9/3 11:25
  **/
 @Service
-public class AccountService {
+public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountMapper accountMapper;

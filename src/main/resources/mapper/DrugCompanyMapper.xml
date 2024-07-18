@@ -35,7 +35,17 @@
             </if>
         </where>
     </select>
-    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.DrugCompany"></select>
+    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.DrugCompany">
+
+    </select>
+    <select id="selectAll" resultMap="DrugCompanyResult">
+        select company_id,
+               company_name
+        from drugcompany
+    </select>
+    <select id="getSize" resultType="java.lang.Integer">
+        select count(company_id) from drugcompany
+    </select>
     <!--    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.DrugCompany">-->
 
 <!--    </select>-->

@@ -18,6 +18,11 @@
         </association>
     </resultMap>
 
+    <resultMap id="getAllCompanyMap" type="com.qst.medical.model.DrugCompanyModel">
+        <id column="company_id" property="companyId"/>
+        <result column="company_name" property="companyName"/>
+    </resultMap>
+
     <!--查询所有的医药公司政策-->
     <select id="getAllPolicy" resultMap="getAllPolicyMap">
         SELECT cp.id,cp.title,cp.message,cp.company_id,cp.update_time,dc.company_name
@@ -34,6 +39,9 @@
                 </if>
             </trim>
         </where>
+    </select>
+    <select id="getCompany" resultMap="getAllCompanyMap">
+        select drugcompany.company_id,drugcompany.company_name from drugcompany
     </select>
 
 

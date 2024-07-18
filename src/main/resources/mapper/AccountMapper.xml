@@ -19,12 +19,6 @@
             <if test="realname !=null and realname != ''">
                 ,realname=#{realname}
             </if>
-            <if test="updatetime !=null">
-                ,updatetime=#{updatetime}
-            </if>
-            <if test="createtime !=null">
-                ,createtime=#{createtime}
-            </if>
         </trim>
     </sql>
 
@@ -54,7 +48,7 @@
 
     <!--更新账户信息-->
     <update id="updateAccount">
-        update account set <include refid="updateValue"></include> where id=#{id}
+        update account set updatetime=now()<include refid="updateValue"/> where id=#{id}
     </update>
 
     <!--根据id删除账户信息-->

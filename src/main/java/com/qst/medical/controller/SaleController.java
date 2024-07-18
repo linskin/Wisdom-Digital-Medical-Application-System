@@ -17,11 +17,21 @@ public class SaleController {
     @Autowired
     private SaleServiceImpl saleService;
 
-    @GetMapping(value = {"/{pn}/{size}",""})
+    @GetMapping(value = {"/{pn}/{size}"})
     public Msg getSaleWithPage(@PathVariable(value = "pn",required = false) Integer pn,
                                @PathVariable(value = "size",required = false) Integer size,
                                @RequestParam(required = false) String name) {
         PageInfo<Sale> info = saleService.getSaleWithPage(pn, size, name);
+        if (info != null) {
+            return Msg.success().data("salePageInfo",info);
+        }
+        return Msg.fail();
+    }
+
+    @GetMapping
+    public Msg getSaleList() {
+        int pageSize = saleService.getSaleTableSize();
+        PageInfo<Sale> info = saleService.getSaleWithPage(1, pageSize, null);
         if (info != null) {
             return Msg.success().data("salePageInfo",info);
         }

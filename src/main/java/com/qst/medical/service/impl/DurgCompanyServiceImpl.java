@@ -4,13 +4,15 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.qst.medical.domain.DrugCompany;
 import com.qst.medical.mapper.DrugCompanyMapper;
+import com.qst.medical.model.DrugCompanyModel;
+import com.qst.medical.service.DurgCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class DurgCompanyServiceImpl {
+public class DurgCompanyServiceImpl implements DurgCompanyService {
 
     @Autowired//自动注入
     DrugCompanyMapper drugCompanyMapper;
@@ -18,10 +20,6 @@ public class DurgCompanyServiceImpl {
     /**
      * 分页模糊查询医药公司集合
      *
-     * @param pageNum
-     * @param pageSize
-     * @param name
-     * @return
      */
 
 
@@ -31,6 +29,10 @@ public class DurgCompanyServiceImpl {
         List<DrugCompany> list = drugCompanyMapper.selectList(name);
         // 该对象包含分页的所有信息
         return new PageInfo<>(list);
+    }
+
+    public int getDrugCompanyTableSize() {
+        return drugCompanyMapper.getSize();
     }
 
     public int addDrugCompany(DrugCompany company) {
@@ -43,5 +45,9 @@ public class DurgCompanyServiceImpl {
 
     public int updateDrugCompany(DrugCompany company) {
         return drugCompanyMapper.update(company);
+    }
+
+    public List<DrugCompanyModel> getAllDrugCompany() {
+        return drugCompanyMapper.selectAll();
     }
 }

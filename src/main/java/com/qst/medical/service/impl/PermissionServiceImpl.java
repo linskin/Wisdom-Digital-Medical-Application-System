@@ -3,23 +3,22 @@ package com.qst.medical.service.impl;
 import com.qst.medical.domain.Permission;
 import com.qst.medical.mapper.PermissionMapper;
 import com.qst.medical.model.PermissionModel;
+import com.qst.medical.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: 权限菜单业务逻辑类
- * @author: liulindong
- * @create: 2021/9/2 15:57
+ * &#064;description:  权限菜单业务逻辑类
+ * &#064;author:  liulindong
+ * &#064;create:  2021/9/2 15:57
  **/
 @Service
-public class PermissionService {
+public class PermissionServiceImpl implements PermissionService {
 
     @Autowired
     private PermissionMapper permissionMapper;
-
-//    public String finalRoleName;
 
     /**
      * 获取所有的权限菜单列表
@@ -28,20 +27,12 @@ public class PermissionService {
     public List<PermissionModel> getAllPermission(String roleName) {
         String finalRoleName = "ROLE_"+roleName;
         List<PermissionModel> allPermission = permissionMapper.getPermission(finalRoleName.trim());
-        PermissionModel fatherPermisson = new PermissionModel();
         List<PermissionModel> finalPermisson = new ArrayList<>();
         for (PermissionModel per:allPermission) {
             if (per.getPid() == 0) {
-//                BeanUtils.copyProperties(per, fatherPermisson);
-//                finalPermisson.add(selectChildren(fatherPermisson, allPermission));
                 finalPermisson.add(selectChildren(per, allPermission,finalRoleName));
             }
         }
-        //调用递归函数，封装成一个最终的permission节点，节点包括children集合
-
-        //fatherPermisson = selectChildren(fatherPermisson, allPermission);
-        //return Msg.success().data("permissions", finalPermisson);
-        //return Msg.success().data("permissions", fatherPermisson);
         return finalPermisson;
     }
 
