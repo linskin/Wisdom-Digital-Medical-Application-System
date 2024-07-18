@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qst.medical.mapper.SaleMapper">
+
+    <resultMap id="SaleResult" type="com.qst.medical.domain.Sale">
+        <id column="sale_id" property="saleId" />
+        <result column="sale_name" property="saleName"/>
+        <result column="sale_phone" property="salePhone"/>
+    </resultMap>
+
+    <select id="getAllSale" resultMap="SaleResult">
+        select * from sale
+        <if test="sale_name != null and sale_name != ''">
+            <where>
+                sale_name like concat('%',#{sale_name},'%')
+            </where>
+        </if>
+    </select>
+
+    <select id="getSaleById" resultMap="SaleResult">
+        select * from sale where sale_id=#{id} limit 1
+    </select>
+
+    <insert id="saveSale" parameterType="com.qst.medical.entity.SaleEntity">
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="total">
+            select count(*) from sale
+        </selectKey>
+        insert into sale(sale_name,sale_phone,updatetime,createtime,lng,lat,address)
+        values (#{saleName},#{salePhone},now(),now(),#{lng},#{lat},#{address})
+    </insert>
+
+    <delete id="deleteSaleById">
+        delete from sale where sale_id=#{id}
+    </delete>
+
+    <update id="updateSaleById">
+        update sale set sale_name=#{saleName},sale_phone=#{salePhone},updatetime=now()
+        where sale_id=#{saleId}
+    </update>
+</mapper>
