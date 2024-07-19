@@ -3,6 +3,7 @@ package com.qst.medical.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.qst.medical.domain.Doctor;
+import com.qst.medical.service.impl.AccountServiceImpl;
 import com.qst.medical.service.impl.DoctorServiceImpl;
 import com.qst.medical.util.Msg;
 import io.swagger.annotations.Api;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 public class DoctorController {
     @Autowired
     DoctorServiceImpl doctorServiceImpl;
+    @Autowired
+    AccountServiceImpl accountService;
 
     @GetMapping
     public Msg getDoctorInfo(@RequestParam(value = "pn") int pageNum, @RequestParam(value = "size") int pageSize, @RequestParam(value = "keyword", required = false) String keyword) {
@@ -52,6 +55,11 @@ public class DoctorController {
             return Msg.success().mess("Update doctor successfully");
         }
         return Msg.fail().mess("Update doctor failed");
+    }
+
+    @PutMapping("/reset/{id}")
+    public Msg resetPwd(@PathVariable("id") Long id) {
+        return accountService.resetPwd(id);
     }
 
     @DeleteMapping("{id}")

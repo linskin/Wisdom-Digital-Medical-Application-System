@@ -8,19 +8,22 @@ import java.util.List;
 
 public interface DoctorMapper{
 
-//    @Override
+
     int insert(Doctor doctor);
 
-//    @Override
+
     int update(Doctor doctor);
 
-//    @Override
+
     int delete(Long id);
 
-//    @Override
+    int getSize();
+
     Doctor selectByPrimaryKey(Long id);
 
-    List<Doctor> selectDoctorList(String keyword);
+    List<Doctor> getAllDoctorTreatTypeAndLevelId();
+
+    List<Doctor> selectDoctorList(String name);
 
     List<TreatTypeModel> getAllTreatType();
 

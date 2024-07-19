@@ -44,6 +44,10 @@
         select drugcompany.company_id,drugcompany.company_name from drugcompany
     </select>
 
+    <select id="getPolicyWithCurrentFour" resultMap="getAllCompanyMap" >
+        select * from company_policy order by update_time desc limit 4
+    </select>
+
 
     <!--添加医药公司政策-->
     <insert id="savePolicy">

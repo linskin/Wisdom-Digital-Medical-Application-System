@@ -13,6 +13,7 @@ import com.qst.medical.service.DoctorService;
 import com.qst.medical.util.MD5;
 import com.qst.medical.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.security.RolesAllowed;
@@ -43,7 +44,7 @@ public class DoctorServiceImpl implements DoctorService {
 
         accountEntity.setPhoneNumber(phoneNumber);
         accountEntity.setUname(doctor.getName()+phoneNumber.substring(phoneNumber.length() - 4));
-        accountEntity.setPwd(MD5.encrypt(doctor.getPwd()));
+        accountEntity.setPwd(new BCryptPasswordEncoder().encode(doctor.getPwd()));
         accountEntity.setUtype("ROLE_2");
 
         if (accountMapper.checkPhone(accountEntity.getPhoneNumber()) > 0) {
@@ -86,5 +87,4 @@ public class DoctorServiceImpl implements DoctorService {
         //若无数据，则返回失败
         return Msg.fail();
     }
-
 }

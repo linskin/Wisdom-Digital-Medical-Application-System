@@ -15,4 +15,6 @@ public interface MaterialMapper {
     Material selectByPrimaryKey(Long id);
 
     List<Material> selectList(String keyword);
+
+    List<Material> getMaterialWithCurrentFive();
 }

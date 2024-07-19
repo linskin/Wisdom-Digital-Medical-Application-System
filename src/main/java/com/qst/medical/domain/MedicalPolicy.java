@@ -1,19 +1,12 @@
 package com.qst.medical.domain;
 
 
-import javax.validation.constraints.Size;
-import javax.validation.constraints.NotNull;
-
-import java.io.Serializable;
-
 import com.qst.medical.domain.superdomain.SuperDomain;
-import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.Length;
 
 /**
-* 
-* @TableName medical_policy
-*/
+ *
+ * @TableName medical_policy
+ */
 public class MedicalPolicy extends SuperDomain {
 
     private Long id;

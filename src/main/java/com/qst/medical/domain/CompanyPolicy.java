@@ -1,5 +1,6 @@
 package com.qst.medical.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.qst.medical.domain.superdomain.SuperDomain;
 
 import java.util.Date;
@@ -9,7 +10,9 @@ public class CompanyPolicy extends SuperDomain {
     private String title;
     private String message;
     private Long companyId;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date createTime;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date updateTime;
 
     public Long getId() {

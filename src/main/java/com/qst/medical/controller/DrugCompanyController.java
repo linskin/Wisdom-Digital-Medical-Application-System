@@ -63,11 +63,6 @@ public class DrugCompanyController {
         }
         //若无数据，则返回失败
         return Msg.fail();
-//        List<DrugCompanyModel> list = drugCompanyService.getAllDrugCompany();
-//        if (!list.isEmpty()){
-//            return Msg.success().data("companyInfo", list);
-//        }
-//        return Msg.fail();
     }
 
     @PutMapping("/{id}")

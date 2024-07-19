@@ -23,4 +23,6 @@ public interface DrugMapper {
 
     int deleteDrugById(Long drugId);
 
+    int getSize();
+
 }

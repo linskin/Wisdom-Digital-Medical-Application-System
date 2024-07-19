@@ -7,9 +7,11 @@
     <resultMap id="DoctorResult" type="com.qst.medical.domain.Doctor">
         <id column="level_id" property="levelId" />
         <result column="type_id" property="typeId" />
+        <result column="account_id" property="accountId" />
     </resultMap>
+
     <sql id="selectDoctorVo">
-        select doctor.id,doctor.name,doctor.age,doctor.sex,doctor.phone as phoneNumber,doctor_level.name as doctorLevel,treat_type.name as treatType
+        select doctor.id,doctor.name,doctor.age,doctor.sex,doctor.phone as phoneNumber,doctor_level.name as doctorLevel,treat_type.name as treatType,doctor.account_id
         from doctor,doctor_level,treat_type
         where doctor_level.id = doctor.level_id and treat_type.id = doctor.type_id
     </sql>
@@ -35,11 +37,11 @@
 <!--    <select id="selectByPrimaryKey" resultType="com.qst.medical.domain.Doctor"></select>-->
     <select id="selectDoctorList" resultMap="DoctorResult">
         <include refid="selectDoctorVo"/>
-        <where>
+
             <if test="name != null and name != ''">
-                and doctor.name like concat('%',#{keword},'%')
+                and doctor.name like concat('%',#{name},'%')
             </if>
-        </where>
+
     </select>
     <select id="getAllLevel" resultType="com.qst.medical.model.DoctorLevelModel">
         select *
@@ -53,6 +55,14 @@
         select *
         from doctor
         where id = #{id}
+    </select>
+
+    <select id="getSize" resultType="java.lang.Integer">
+        select count(id) from doctor
+    </select>
+
+    <select id="getAllDoctorTreatTypeAndLevelId" resultType="com.qst.medical.domain.Doctor">
+        select doctor.level_id,doctor.type_id from doctor
     </select>
 
 </mapper>

@@ -1,6 +1,8 @@
 package com.qst.medical.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Material {
@@ -8,7 +10,9 @@ public class Material {
     private Long id;
     private String title;
     private String message;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date createTime;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date updateTime;
 
     @Override

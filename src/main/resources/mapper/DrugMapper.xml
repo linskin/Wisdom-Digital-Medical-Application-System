@@ -27,17 +27,20 @@
     <!--药品主查询，查询所有的药品信息-->
     <select id="getAllDrug" resultMap="getAllDrugs">
         select * from drug
+        <where>
         <if test="name != null and name != ''">
-            <where>
-                <bind name="drugName" value="'%' + name + '%'"/>
-                drug_name LIKE #{name}
-            </where>
+                drug_name like concat('%',#{name},'%')
         </if>
+        </where>
     </select>
 
     <!--药品子查询，查询药品id对应的所有药店-->
     <select id="getWithSale" resultMap="SaleResult">
         select s.sale_id,s.sale_name from sale s left join drug_sale ds on s.sale_id=ds.sale_id where ds.drug_id=#{drugId}
+    </select>
+
+    <select id="getSize" resultType="java.lang.Integer">
+        select count(drug_id) from drug
     </select>
 
     <!--新增药品信息-->

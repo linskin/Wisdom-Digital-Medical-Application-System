@@ -23,6 +23,7 @@
     <select id="getSaleById" resultMap="SaleResult">
         select * from sale where sale_id=#{id} limit 1
     </select>
+
     <select id="getSize" resultType="java.lang.Integer">
         select count(sale_id) from sale
     </select>
