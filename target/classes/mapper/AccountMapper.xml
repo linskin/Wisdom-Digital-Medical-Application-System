@@ -19,12 +19,6 @@
             <if test="realname !=null and realname != ''">
                 ,realname=#{realname}
             </if>
-            <if test="updatetime !=null">
-                ,updatetime=#{updatetime}
-            </if>
-            <if test="createtime !=null">
-                ,createtime=#{createtime}
-            </if>
         </trim>
     </sql>
 
@@ -41,17 +35,20 @@
     <!--注册账号-->
     <insert id="regist" useGeneratedKeys="true" keyProperty="id">
         insert into account(uname,realname,pwd,phonenumber,utype,updatetime,createtime)
-        values(#{uname},#{realname},#{pwd},#{phoneNumber},#{utype},#{updatetime},#{createtime})
+        values(#{uname},#{realname},#{pwd},#{phoneNumber},#{utype},now(),now())
     </insert>
 
     <!--检查手机号-->
     <select id="checkPhone" resultType="int">
         select count(id) from `doctor` where phone=#{phoneNumber} limit 1
     </select>
+    <select id="selectIdByPhone" resultType="java.lang.Long">
+        select id from account where phonenumber=#{phoneNumber}
+    </select>
 
     <!--更新账户信息-->
     <update id="updateAccount">
-        update account set <include refid="updateValue"></include> where id=#{id}
+        update account set updatetime=now()<include refid="updateValue"/> where id=#{id}
     </update>
 
     <!--根据id删除账户信息-->
