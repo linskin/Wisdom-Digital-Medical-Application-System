@@ -10,6 +10,8 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
+
 @Api(tags = "医药公司信息控制器") //该注解是swagger提供的，用于描述接口
 @RestController
 @RequestMapping("/api/doctors")
@@ -33,6 +35,7 @@ public class DoctorController {
         return doctorServiceImpl.getDoctorLevelAndType();
     }
 
+    @RolesAllowed({"1"})
     @PostMapping
     public Msg addDoctor(@RequestBody Doctor doctor) {
         if (doctor == null){
@@ -45,6 +48,7 @@ public class DoctorController {
         return Msg.fail();
     }
 
+    @RolesAllowed({"1"})
     @PutMapping("{id}")
     public Msg updateDoctor(@PathVariable("id") Long id, @RequestBody Doctor doctor) {
         if (doctor == null){
@@ -57,11 +61,13 @@ public class DoctorController {
         return Msg.fail().mess("Update doctor failed");
     }
 
+    @RolesAllowed({"1"})
     @PutMapping("/reset/{id}")
     public Msg resetPwd(@PathVariable("id") Long id) {
         return accountService.resetPwd(id);
     }
 
+    @RolesAllowed({"1"})
     @DeleteMapping("{id}")
     public Msg deleteDoctor(@PathVariable("id") Long id) {
         if (doctorServiceImpl.deleteDoctor(id) > 0) {

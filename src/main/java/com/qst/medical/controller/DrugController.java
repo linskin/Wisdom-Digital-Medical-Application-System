@@ -34,13 +34,13 @@ public class DrugController {
         return drugService.saveDrug(drugParam);
     }
 
-    @RolesAllowed({"1"})
+    @RolesAllowed({"1","2"})
     @PutMapping(value = "/{id}")
     public Msg updateDrug(@PathVariable("id") Long id, @RequestBody DrugParam drugParam) {
         return drugService.updateDrug(id,drugParam);
     }
 
-    @RolesAllowed({"1"})
+    @RolesAllowed({"1","2"})
     @DeleteMapping(value = "/{drugId}")
     public Msg deleteDrug(@PathVariable("drugId") Long drugId) {
         return drugService.deleteDrug(drugId);

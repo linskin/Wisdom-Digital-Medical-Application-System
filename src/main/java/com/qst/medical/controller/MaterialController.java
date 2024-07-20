@@ -19,10 +19,6 @@ public class MaterialController {
     MaterialServiceImpl materialService;
 
     @RolesAllowed({"1"})
-
-    /**
-     * 分页查询必备材料列表
-     */
     @GetMapping("")
     public Msg getMaterialList(@RequestParam(name = "pn", defaultValue = "1") int pageNum, @RequestParam(name = "size", defaultValue = "5") int pageSize, @RequestParam String keyword) {
 
@@ -38,6 +34,7 @@ public class MaterialController {
         return Msg.fail();
     }
 
+    @RolesAllowed({"1","2"})
     @PostMapping
     public Msg addMaterial(@RequestBody Material material) {
         int i = materialService.addMaterial(material);
@@ -47,12 +44,14 @@ public class MaterialController {
         return Msg.fail();
     }
 
+    @RolesAllowed({"1","2"})
     @DeleteMapping("/{id}")
     public Msg delMaterial(@PathVariable Long id) {
         int i = materialService.deleteMaterialById(id);
         return i > 0 ? Msg.success().mess("删除成功！") : Msg.fail();
     }
 
+    @RolesAllowed({"1","2"})
     @PutMapping("/{id}")
     public Msg updMaterial(@RequestBody Material material, @PathVariable Long id) {
         material.setId(id);

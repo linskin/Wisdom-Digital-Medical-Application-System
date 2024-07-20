@@ -65,6 +65,7 @@ public class DrugCompanyController {
         return Msg.fail();
     }
 
+    @RolesAllowed({"1"})
     @PutMapping("/{id}")
     public Msg updateDrugCompany(@PathVariable("id") Long id, @RequestBody DrugCompany company)
     {
@@ -77,6 +78,7 @@ public class DrugCompanyController {
         return Msg.fail();
     }
 
+    @RolesAllowed({"1"})
     @DeleteMapping("/{id}")
     public Msg deleteDrugCompany(@PathVariable("id") Long id)
     {
