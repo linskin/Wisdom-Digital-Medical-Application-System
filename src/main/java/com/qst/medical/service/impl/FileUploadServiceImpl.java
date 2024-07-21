@@ -39,7 +39,7 @@ public class FileUploadServiceImpl implements FileUploadService {
             if (!tmpFile.exists()) {
                 tmpFile.mkdirs();
             }
-            os = new FileOutputStream(tmpFile.getPath()+File.separator+fileName);
+            os = Files.newOutputStream(Paths.get(tmpFile.getPath() + File.separator + fileName));
             while((len=inputStream.read(bs))!=-1){
                 os.write(bs,0,len);
             }
