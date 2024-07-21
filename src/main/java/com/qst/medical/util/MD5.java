@@ -2,9 +2,12 @@ package com.qst.medical.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public final class MD5 {
+
+    private static final Logger logger = LogManager.getLogger(MD5.class);
 
     public static String encrypt(String strSrc) {
         try {
@@ -24,7 +27,7 @@ public final class MD5 {
             }
             return new String(chars);
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            logger.error("An error occurred", e);
             throw new RuntimeException("MD5加密出错！！+" + e);
         }
     }

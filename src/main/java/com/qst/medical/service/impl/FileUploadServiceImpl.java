@@ -26,25 +26,26 @@ public class FileUploadServiceImpl implements FileUploadService {
     String bashUrl;
 
     public Msg upload(MultipartFile file){
-        OutputStream os = null;
-        InputStream inputStream = null;
-        String fileName = null;
+
+        byte[] bs = new byte[1024];
+        String path = downloadLocation;
+        File tmpFile=new File(path);
+        if (!tmpFile.exists()) {
+            tmpFile.mkdirs();
+        }
+
+        String fileName;
+        fileName = UUID.randomUUID()+file.getOriginalFilename();
+
         int len;
-        try {
-            inputStream = file.getInputStream();
-            fileName = UUID.randomUUID()+file.getOriginalFilename();
-            String path = downloadLocation;
-            byte[] bs = new byte[1024];
-            File tmpFile=new File(path);
-            if (!tmpFile.exists()) {
-                tmpFile.mkdirs();
-            }
-            os = new FileOutputStream(tmpFile.getPath()+File.separator+fileName);
+        try(
+                InputStream inputStream = file.getInputStream();
+                OutputStream os = new FileOutputStream(tmpFile.getPath()+File.separator+fileName);
+                ) {
             while((len=inputStream.read(bs))!=-1){
                 os.write(bs,0,len);
             }
-            os.close();
-            inputStream.close();
+
         } catch (IOException e) {
             return Msg.fail().mess("上传失败");
         }

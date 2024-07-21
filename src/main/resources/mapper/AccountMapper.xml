@@ -45,6 +45,9 @@
     <select id="selectIdByPhone" resultType="java.lang.Long">
         select id from account where phonenumber=#{phoneNumber}
     </select>
+<!--    <select id="selectRole" resultType="java.lang.String">-->
+<!--        select utype from account where id=#{id}-->
+<!--    </select>-->
 
     <!--更新账户信息-->
     <update id="updateAccount">
