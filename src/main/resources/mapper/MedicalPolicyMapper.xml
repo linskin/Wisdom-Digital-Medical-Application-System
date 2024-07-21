@@ -55,4 +55,7 @@
             </trim>
         </where>
     </select>
+    <select id="getMaterialWithCurrentFive" resultType="com.qst.medical.domain.Material">
+        select * from medical_policy order by update_time desc limit 5
+    </select>
 </mapper>

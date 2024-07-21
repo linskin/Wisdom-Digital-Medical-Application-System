@@ -23,16 +23,16 @@ public class DashBoardServiceImpl implements DashBoardService {
     @Autowired
     private SaleMapper saleMapper;
     @Autowired
-    private MaterialMapper materialMapper;
+    private MedicalPolicyMapper medicalPolicyMapper;
     @Qualifier("companyPolicyMapper")
     @Autowired
     private CompanyPolicyMapper companyPolicyMapper;
 
     public DashBoard getDashboardData(){
         DashBoard dashBoard = new DashBoard();
-        dashBoard.setCompanyNumb(doctorMapper.getSize());
+        dashBoard.setCompanyNumb(drugCompanyMapper.getSize());
         dashBoard.setDrugNumb(drugMapper.getSize());
-        dashBoard.setDrugNumb(drugCompanyMapper.getSize());
+        dashBoard.setDoctorNumb(doctorMapper.getSize());
         dashBoard.setSaleNumb(saleMapper.getSize());
         //所有医生信息
         List<Doctor> allDoctorTreatTypeAndLevelId = doctorMapper.getAllDoctorTreatTypeAndLevelId();
@@ -87,7 +87,7 @@ public class DashBoardServiceImpl implements DashBoardService {
 
         dashBoard.setDocLevel(doctorLevelMap);//柱状图数据集
         dashBoard.setTreatMap(doctorTreatMap);//饼图数据集
-        dashBoard.setMaterials(materialMapper.getMaterialWithCurrentFive());
+        dashBoard.setMaterials(medicalPolicyMapper.getMaterialWithCurrentFive());
         dashBoard.setPolicys(companyPolicyMapper.getPolicyWithCurrentFour());
 
         return dashBoard;

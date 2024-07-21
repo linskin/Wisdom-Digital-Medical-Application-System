@@ -21,6 +21,7 @@
     <resultMap id="getAllCompanyMap" type="com.qst.medical.model.DrugCompanyModel">
         <id column="company_id" property="companyId"/>
         <result column="company_name" property="companyName"/>
+<!--        <result column="company_phone" property="c"/>-->
     </resultMap>
 
     <!--查询所有的医药公司政策-->
@@ -44,7 +45,7 @@
         select drugcompany.company_id,drugcompany.company_name from drugcompany
     </select>
 
-    <select id="getPolicyWithCurrentFour" resultMap="getAllCompanyMap" >
+    <select id="getPolicyWithCurrentFour" resultMap="getAllPolicyMap" >
         select * from company_policy order by update_time desc limit 4
     </select>
 

@@ -1,5 +1,6 @@
 package com.qst.medical.mapper;
 
+import com.qst.medical.domain.Material;
 import com.qst.medical.entity.MedicalPolicyEntity;
 import com.qst.medical.model.MedicalPolicyModel;
 import com.qst.medical.param.MedicalPolicyParam;
@@ -17,4 +18,6 @@ public interface MedicalPolicyMapper {
     int deleteMedicalPolicy(Long id);
 
     int deleteByCity(Integer city);
+
+    List<Material> getMaterialWithCurrentFive();
 }
